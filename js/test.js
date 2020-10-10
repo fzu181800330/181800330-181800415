@@ -1,4 +1,5 @@
 ﻿var json = [];//json数组
+
 function setJson()
 {   
    
@@ -64,10 +65,9 @@ function setJson()
 
                 //学生名节点
                 var stuName = docArray[i].match(/(?<=级博士生：).*/) + '';
-                console.log(stuName);
+              //  console.log(stuName);
                 var stuNameArray = stuName.split("、");
-                console.log(stuNameArray);
-
+                //console.log(stuNameArray);
                 //同级不同学生
                 for(var j = 0; j < stuNameArray.length; j++){
                     var stu = {};
@@ -76,7 +76,7 @@ function setJson()
                     stu.icon = "";
                     stu.parentCode = year.code;
                     stu.child = [];
-
+                    var cnt=0;
                     var reg1=new RegExp(("(?<="+stu.name+"：).*"));
                     var skill=data.match(reg1)+'';
                     if(skill!='null'){
@@ -97,7 +97,7 @@ function setJson()
                             newskill.child=[];
                             attribute1.child[p]=newskill;
                         }                     
-                        stu.child[0]=attribute1; 
+                        stu.child[cnt++]=attribute1; 
                     }
                     var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
                     var message=data.match(reg2)+'';
@@ -118,12 +118,13 @@ function setJson()
                            mes.child=[];
                            attribute2.child[m]=mes; 
                         }
-                        stu.child[1]=attribute2;  
+                        console.log(stu.child)
+                            stu.child[cnt]=attribute2;
                     } 
                  
                     //stu.child[1]=attribute2; 
-                    console.log(skill);
-                    console.log(skillArray);
+                   // console.log(skill);
+                   // console.log(skillArray);
                     year.child[j] = stu;
                   //  console.log(stu.name);
                     
@@ -171,7 +172,7 @@ function setJson()
                     stu.icon = "";
                     stu.parentCode = year.code;
                     stu.child = [];
-
+                    var cnt=0;
                     var reg1=new RegExp(("(?<="+stu.name+"：).*"));
                     var skill=data.match(reg1)+'';
                     if(skill!='null'){
@@ -193,7 +194,7 @@ function setJson()
                             attribute1.child[p]=newskill;
                         }
                         
-                    stu.child[0]=attribute1; 
+                    stu.child[cnt++]=attribute1; 
                     } 
                     var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
                     var message=data.match(reg2)+'';
@@ -214,10 +215,10 @@ function setJson()
                            mes.child=[];
                            attribute2.child[m]=mes; 
                         }
-                        stu.child[1]=attribute2;  
+                            stu.child[cnt]=attribute2;       
                     } 
-                    console.log(skill);
-                    console.log(skillArray);
+                   // console.log(skill);
+                   // console.log(skillArray);
                     year.child[j] = stu;
                 //    console.log(stu.name);
                     
@@ -264,7 +265,7 @@ function setJson()
                 stu.icon = "";
                 stu.parentCode = year.code;
                 stu.child = [];
-
+                var cnt=0;
                 var reg1=new RegExp(("(?<="+stu.name+"：).*"));
                 var skill=data.match(reg1)+'';
                 if(skill!='null'){
@@ -285,7 +286,7 @@ function setJson()
                         newskill.child=[];
                         attribute1.child[p]=newskill;
                     }   
-                stu.child[0]=attribute1; 
+                stu.child[cnt++]=attribute1; 
                 }
                 var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
                 var message=data.match(reg2)+'';
@@ -306,10 +307,10 @@ function setJson()
                        mes.child=[];
                        attribute2.child[m]=mes; 
                     }
-                    stu.child[1]=attribute2;  
+                        stu.child[cnt]=attribute2;
                 }  
-                    console.log(skill);
-                    console.log(skillArray);
+                   // console.log(skill);
+                   // console.log(skillArray);
                     year.child[j] = stu;
                   //  console.log(stu.name);
                     
