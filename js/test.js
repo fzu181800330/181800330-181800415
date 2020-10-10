@@ -96,10 +96,32 @@ function setJson()
                             newskill.parentCode=attribute1.code;
                             newskill.child=[];
                             attribute1.child[p]=newskill;
+                        }                     
+                        stu.child[0]=attribute1; 
+                    }
+                    var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
+                    var message=data.match(reg2)+'';
+                    if(message!='null'){
+                        var attribute2={};
+                        attribute2.name="联系方式";
+                        attribute2.code=stu.code+attribute2.name;
+                        attribute2.icon="";
+                        attribute2.parentCode=stu.code;
+                        attribute2.child=[];
+                        var messageArray=message.split("、");
+                        for(var m=0;m<messageArray.length;m++){
+                           var mes={};
+                           mes.name=messageArray[m];
+                           mes.code=attribute2.code+mes.name;
+                           mes.icon="";
+                           mes.parentCode=attribute2.code;
+                           mes.child=[];
+                           attribute2.child[m]=mes; 
                         }
-                        
-                    stu.child[0]=attribute1; 
+                        stu.child[1]=attribute2;  
                     } 
+                 
+                    //stu.child[1]=attribute2; 
                     console.log(skill);
                     console.log(skillArray);
                     year.child[j] = stu;
@@ -173,6 +195,27 @@ function setJson()
                         
                     stu.child[0]=attribute1; 
                     } 
+                    var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
+                    var message=data.match(reg2)+'';
+                    if(message!='null'){
+                        var attribute2={};
+                        attribute2.name="联系方式";
+                        attribute2.code=stu.code+attribute2.name;
+                        attribute2.icon="";
+                        attribute2.parentCode=stu.code;
+                        attribute2.child=[];
+                        var messageArray=message.split("、");
+                        for(var m=0;m<messageArray.length;m++){
+                           var mes={};
+                           mes.name=messageArray[m];
+                           mes.code=attribute2.code+mes.name;
+                           mes.icon="";
+                           mes.parentCode=attribute2.code;
+                           mes.child=[];
+                           attribute2.child[m]=mes; 
+                        }
+                        stu.child[1]=attribute2;  
+                    } 
                     console.log(skill);
                     console.log(skillArray);
                     year.child[j] = stu;
@@ -241,10 +284,30 @@ function setJson()
                         newskill.parentCode=attribute1.code;
                         newskill.child=[];
                         attribute1.child[p]=newskill;
-                    }
-                    
+                    }   
                 stu.child[0]=attribute1; 
-                } 
+                }
+                var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
+                var message=data.match(reg2)+'';
+                if(message!='null'){
+                    var attribute2={};
+                    attribute2.name="联系方式";
+                    attribute2.code=stu.code+attribute2.name;
+                    attribute2.icon="";
+                    attribute2.parentCode=stu.code;
+                    attribute2.child=[];
+                    var messageArray=message.split("、");
+                    for(var m=0;m<messageArray.length;m++){
+                       var mes={};
+                       mes.name=messageArray[m];
+                       mes.code=attribute2.code+mes.name;
+                       mes.icon="";
+                       mes.parentCode=attribute2.code;
+                       mes.child=[];
+                       attribute2.child[m]=mes; 
+                    }
+                    stu.child[1]=attribute2;  
+                }  
                     console.log(skill);
                     console.log(skillArray);
                     year.child[j] = stu;
