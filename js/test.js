@@ -33,7 +33,7 @@ function setJson()
         //导师节点
         json[k] = {};
         json[k].name = block[k].match(/(?<=导师：).*/) + '';//name属性
-       // console.log(json[k].name);
+        console.log(json[k].name);
         json[k].code = json[k].name;
         json[k].icon = "icon-th";
         json[k].child = [];
@@ -65,7 +65,7 @@ function setJson()
 
                 //学生名节点
                 var stuName = docArray[i].match(/(?<=级博士生：).*/) + '';
-              //  console.log(stuName);
+                console.log(stuName);
                 var stuNameArray = stuName.split("、");
                 //console.log(stuNameArray);
                 //同级不同学生
@@ -124,9 +124,9 @@ function setJson()
                  
                     //stu.child[1]=attribute2; 
                    // console.log(skill);
-                   // console.log(skillArray);
+                    console.log(skillArray);
                     year.child[j] = stu;
-                  //  console.log(stu.name);
+                    console.log(stu.name);
                     
                 }
 
@@ -161,9 +161,9 @@ function setJson()
 
                 //学生名节点
                 var stuName = docArray[i].match(/(?<=级硕士生：).*/) + '';
-                //console.log(stuName);
+                console.log(stuName);
                 var stuNameArray = stuName.split("、");
-                //console.log(stuNameArray);
+                console.log(stuNameArray);
 
                 for(var j = 0; j < stuNameArray.length; j++){
                     var stu = {};
@@ -217,10 +217,10 @@ function setJson()
                         }
                             stu.child[cnt]=attribute2;       
                     } 
-                   // console.log(skill);
-                   // console.log(skillArray);
+                    console.log(skill);
+                    console.log(skillArray);
                     year.child[j] = stu;
-                //    console.log(stu.name);
+                    console.log(stu.name);
                     
                 }
 
@@ -254,9 +254,9 @@ function setJson()
 
                 //学生名节点
                 var stuName = docArray[i].match(/(?<=级本科生：).*/) + '';
-              //  console.log(stuName);
+                console.log(stuName);
                 var stuNameArray = stuName.split("、");
-               // console.log(stuNameArray);
+                console.log(stuNameArray);
 
                for(var j = 0; j < stuNameArray.length; j++){
                 var stu = {};
@@ -309,10 +309,10 @@ function setJson()
                     }
                         stu.child[cnt]=attribute2;
                 }  
-                   // console.log(skill);
-                   // console.log(skillArray);
+                    console.log(skill);
+                    console.log(skillArray);
                     year.child[j] = stu;
-                  //  console.log(stu.name);
+                   console.log(stu.name);
                     
                 }
 
