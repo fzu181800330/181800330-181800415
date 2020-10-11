@@ -1,4 +1,5 @@
 ﻿var json = [];//json数组
+
 function setJson()
 {   
    
@@ -64,10 +65,9 @@ function setJson()
 
                 //学生名节点
                 var stuName = docArray[i].match(/(?<=级博士生：).*/) + '';
-                console.log(stuName);
+              //  console.log(stuName);
                 var stuNameArray = stuName.split("、");
-                console.log(stuNameArray);
-
+                //console.log(stuNameArray);
                 //同级不同学生
                 for(var j = 0; j < stuNameArray.length; j++){
                     var stu = {};
@@ -76,24 +76,55 @@ function setJson()
                     stu.icon = "";
                     stu.parentCode = year.code;
                     stu.child = [];
-                    
-                    var reg=new RegExp(("(?<="+stu.name+"：).*"));
-                    var skill=data.match(reg)+'';
+                    var cnt=0;
+                    var reg1=new RegExp(("(?<="+stu.name+"：).*"));
+                    var skill=data.match(reg1)+'';
                     if(skill!='null'){
+                        var attribute1={};
+                        attribute1.name="工作经历或科研方向";
+                        attribute1.code=stu.code+attribute1.name;
+                        attribute1.icon="";
+                        attribute1.parentCode=stu.code;
+                        attribute1.child=[];
+                        
                         var skillArray=skill.split("、");
                         for(var p=0;p<skillArray.length;p++){
                             var newskill={};
                             newskill.name=skillArray[p];
-                            newskill.code=stu.code+newskill.name;
+                            newskill.code=attribute1.code+newskill.name;
                             newskill.icon="";
-                            newskill.parentCode=stu.code;
+                            newskill.parentCode=attribute1.code;
                             newskill.child=[];
-                            stu.child[p]=newskill;
-                        }
-                       
+                            attribute1.child[p]=newskill;
+                        }                     
+                        stu.child[cnt++]=attribute1; 
                     }
-                    console.log(skill);
-                    console.log(skillArray);
+                    var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
+                    var message=data.match(reg2)+'';
+                    if(message!='null'){
+                        var attribute2={};
+                        attribute2.name="联系方式";
+                        attribute2.code=stu.code+attribute2.name;
+                        attribute2.icon="";
+                        attribute2.parentCode=stu.code;
+                        attribute2.child=[];
+                        var messageArray=message.split("、");
+                        for(var m=0;m<messageArray.length;m++){
+                           var mes={};
+                           mes.name=messageArray[m];
+                           mes.code=attribute2.code+mes.name;
+                           mes.icon="";
+                           mes.parentCode=attribute2.code;
+                           mes.child=[];
+                           attribute2.child[m]=mes; 
+                        }
+                        console.log(stu.child)
+                            stu.child[cnt]=attribute2;
+                    } 
+                 
+                    //stu.child[1]=attribute2; 
+                   // console.log(skill);
+                   // console.log(skillArray);
                     year.child[j] = stu;
                   //  console.log(stu.name);
                     
@@ -134,7 +165,6 @@ function setJson()
                 var stuNameArray = stuName.split("、");
                 //console.log(stuNameArray);
 
-                //同级不同学生
                 for(var j = 0; j < stuNameArray.length; j++){
                     var stu = {};
                     stu.name = stuNameArray[j];
@@ -142,23 +172,53 @@ function setJson()
                     stu.icon = "";
                     stu.parentCode = year.code;
                     stu.child = [];
-                    var reg=new RegExp(("(?<="+stu.name+"：).*"));
-                    var skill=data.match(reg)+'';
+                    var cnt=0;
+                    var reg1=new RegExp(("(?<="+stu.name+"：).*"));
+                    var skill=data.match(reg1)+'';
                     if(skill!='null'){
+                        var attribute1={};
+                        attribute1.name="工作经历或科研方向";
+                        attribute1.code=stu.code+attribute1.name;
+                        attribute1.icon="";
+                        attribute1.parentCode=stu.code;
+                        attribute1.child=[];
+                        
                         var skillArray=skill.split("、");
                         for(var p=0;p<skillArray.length;p++){
                             var newskill={};
                             newskill.name=skillArray[p];
-                            newskill.code=stu.code+newskill.name;
+                            newskill.code=attribute1.code+newskill.name;
                             newskill.icon="";
-                            newskill.parentCode=stu.code;
+                            newskill.parentCode=attribute1.code;
                             newskill.child=[];
-                            stu.child[p]=newskill;
+                            attribute1.child[p]=newskill;
                         }
-                       
-                    }
-                    console.log(skill);
-                    console.log(skillArray);
+                        
+                    stu.child[cnt++]=attribute1; 
+                    } 
+                    var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
+                    var message=data.match(reg2)+'';
+                    if(message!='null'){
+                        var attribute2={};
+                        attribute2.name="联系方式";
+                        attribute2.code=stu.code+attribute2.name;
+                        attribute2.icon="";
+                        attribute2.parentCode=stu.code;
+                        attribute2.child=[];
+                        var messageArray=message.split("、");
+                        for(var m=0;m<messageArray.length;m++){
+                           var mes={};
+                           mes.name=messageArray[m];
+                           mes.code=attribute2.code+mes.name;
+                           mes.icon="";
+                           mes.parentCode=attribute2.code;
+                           mes.child=[];
+                           attribute2.child[m]=mes; 
+                        }
+                            stu.child[cnt]=attribute2;       
+                    } 
+                   // console.log(skill);
+                   // console.log(skillArray);
                     year.child[j] = stu;
                 //    console.log(stu.name);
                     
@@ -198,31 +258,59 @@ function setJson()
                 var stuNameArray = stuName.split("、");
                // console.log(stuNameArray);
 
-                //同级不同学生
-                for(var j = 0; j < stuNameArray.length; j++){
-                    var stu = {};
-                    stu.name = stuNameArray[j];
-                    stu.code =year.code + stu.name;
-                    stu.icon = "";
-                    stu.parentCode = year.code;
-                    stu.child = [];
-                    var reg=new RegExp(("(?<="+stu.name+"：).*"));
-                    var skill=data.match(reg)+'';
-                    if(skill!='null'){
-                        var skillArray=skill.split("、");
-                        for(var p=0;p<skillArray.length;p++){
-                            var newskill={};
-                            newskill.name=skillArray[p];
-                            newskill.code=stu.code+newskill.name;
-                            newskill.icon="";
-                            newskill.parentCode=stu.code;
-                            newskill.child=[];
-                            stu.child[p]=newskill;
-                        }
-                       
+               for(var j = 0; j < stuNameArray.length; j++){
+                var stu = {};
+                stu.name = stuNameArray[j];
+                stu.code = year.code + stu.name;
+                stu.icon = "";
+                stu.parentCode = year.code;
+                stu.child = [];
+                var cnt=0;
+                var reg1=new RegExp(("(?<="+stu.name+"：).*"));
+                var skill=data.match(reg1)+'';
+                if(skill!='null'){
+                    var attribute1={};
+                    attribute1.name="技能树";
+                    attribute1.code=stu.code+attribute1.name;
+                    attribute1.icon="";
+                    attribute1.parentCode=stu.code;
+                    attribute1.child=[];
+                    
+                    var skillArray=skill.split("、");
+                    for(var p=0;p<skillArray.length;p++){
+                        var newskill={};
+                        newskill.name=skillArray[p];
+                        newskill.code=attribute1.code+newskill.name;
+                        newskill.icon="";
+                        newskill.parentCode=attribute1.code;
+                        newskill.child=[];
+                        attribute1.child[p]=newskill;
+                    }   
+                stu.child[cnt++]=attribute1; 
+                }
+                var reg2=new RegExp(("(?<="+stu.name+"的联系方式：).*"));
+                var message=data.match(reg2)+'';
+                if(message!='null'){
+                    var attribute2={};
+                    attribute2.name="联系方式";
+                    attribute2.code=stu.code+attribute2.name;
+                    attribute2.icon="";
+                    attribute2.parentCode=stu.code;
+                    attribute2.child=[];
+                    var messageArray=message.split("、");
+                    for(var m=0;m<messageArray.length;m++){
+                       var mes={};
+                       mes.name=messageArray[m];
+                       mes.code=attribute2.code+mes.name;
+                       mes.icon="";
+                       mes.parentCode=attribute2.code;
+                       mes.child=[];
+                       attribute2.child[m]=mes; 
                     }
-                    console.log(skill);
-                    console.log(skillArray);
+                        stu.child[cnt]=attribute2;
+                }  
+                   // console.log(skill);
+                   // console.log(skillArray);
                     year.child[j] = stu;
                   //  console.log(stu.name);
                     
