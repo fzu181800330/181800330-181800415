@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>InputTextPage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script src="./js/test.js"></script>
+
+
+<script >
+   //得到文本框的内容存入localStorage
+    function getStr(){
+        var data = document.getElementById("myTextarea").value;
+        localStorage.setItem("str", data);
+        console.log(localStorage.getItem("str"));
+        window.location.href = "index.html";
+    }
+</script>
+
+    
+</head>
+<body class = "bodybg">
+    
+
+    <ul class="dhbody">
+        <li class="left"><a href="#">学树家族树生成器</a></li>
+        <li class="left"><a class="active" href="JStext.html">主页</a></li>
+        <li class="left"><a href="#contact">家族树</a></li>
+    </ul>
+    <br>
+    <br>
+    <br>
+         
+    <div class="container">
+        <label>输入符合规则的信息</label><br>
+        <textarea id="myTextarea" cols="50" rows="21" placeholder="输入格式提醒：
+        导师：张三
+        2016级博士生：天一、王二、吴五
+        2015级硕士生：李四、王五、许六
+        2016级硕士生：刘一、李二、李三
+        2017级本科生：刘六、琪七、司四
+        刘六：JAVA、数学建模
+        李二：字节跳动、京东云
+        李二的联系方式：QQ:XXXXX、TEL:XXXXX、邮箱：XXXXX.com
+        司四的联系方式：微信号：XXXXXX
+        注：填入人员的联系方式时，请保证人员已在前面出现，且格式需为“XXX的联系方式：”（冒号不要省略！！！）
+        格式必须保证输入正确
+        （支持多树共存）"
+        style="z-index: 9999;padding:50px;right: 10px;top: 10px;"></textarea>
+        <br>
+        <button type="button" class="btn btn-primary"  onclick="getStr()">生成树</button>
+    </div>
+
+
+</body>
+</html>
