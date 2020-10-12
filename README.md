@@ -1,6 +1,6 @@
 # 使用说明
 
-- **点击Github上的Clone or Download按钮后可选择下载压缩包或复制链接后使用git clone命令下载。 **
+- **点击Github上的Clone or Download按钮后可选择下载压缩包或复制链接后使用git clone命令下载。**
 
 
 
